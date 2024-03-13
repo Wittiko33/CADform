@@ -7,6 +7,11 @@ SCREW_LENGTH = 10
 GLUE_AREA_LENGTH = 25
 
 
+class WallAnchor(Compound):
+    def __init__(self, screw_diameter: int, screw_length:int, glue_area:int):
+        with BuildPart() as bp:
+            pass
+        super().__init__(bp.part.wrapped)
 
 
 
