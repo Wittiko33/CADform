@@ -22,6 +22,7 @@ class WallAnchor(Compound):
             with BuildSketch():
                 RectangleRounded(glue_area, glue_area, corner_radius)
             extrude(amount=plate_thickness)
+            plate_edges=bp.faces().filter_by(Axis.Z).sort_by(Axis.Z).edges()
             with BuildSketch(bp.faces().filter_by(Axis.Z).sort_by(Axis.Z)[-1]):
                 Circle(radius=screw_diameter/2 + 3)
             extrude(amount=screw_length-plate_thickness)
@@ -32,6 +33,7 @@ class WallAnchor(Compound):
             top_edge = bp.faces().filter_by(Axis.Z).sort_by(Axis.Z)[-1].edges()
             chamfer(top_edge, length=0.6)
             fillet(boss_outer_edges[0], radius=3)          
+            chamfer(plate_edges, length=0.4)
             
         super().__init__(bp.part.wrapped)
 
