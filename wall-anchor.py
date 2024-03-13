@@ -48,3 +48,4 @@ if __name__ == "__main__":
         plate_thickness=2,
     )
     show(my_anchor)
+    my_anchor.export_step("output/wall_anchor.step")
