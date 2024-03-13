@@ -11,7 +11,8 @@ class WallAnchor(Compound):
     """A basic adhesive wall anchor for keyhole slots"""
     def __init__(self, screw_diameter: int, screw_length:int, glue_area:int):
         with BuildPart() as bp:
-            pass
+            with BuildSketch:
+                RectangleRounded(glue_area, glue_area, 2)
         super().__init__(bp.part.wrapped)
 
 
