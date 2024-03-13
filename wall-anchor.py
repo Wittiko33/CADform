@@ -25,11 +25,14 @@ class WallAnchor(Compound):
             with BuildSketch(bp.faces().filter_by(Axis.Z).sort_by(Axis.Z)[-1]):
                 Circle(radius=screw_diameter/2 + 3)
             extrude(amount=screw_length-plate_thickness)
+            boss_outer_edges = bp.edges(Select.LAST).filter_by(Plane.XY).sort_by(Axis.Z)
             with BuildSketch(bp.faces().filter_by(Axis.Z).sort_by(Axis.Z)[-1]):
                 Circle(radius=screw_diameter/2)
             extrude(amount=-screw_length,mode=Mode.SUBTRACT)
             top_edge = bp.faces().filter_by(Axis.Z).sort_by(Axis.Z)[-1].edges()
             chamfer(top_edge, length=0.6)
+            fillet(boss_outer_edges[0], radius=3)          
+            
         super().__init__(bp.part.wrapped)
 
 
