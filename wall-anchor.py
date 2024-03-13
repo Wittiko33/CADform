@@ -8,6 +8,7 @@ GLUE_AREA_LENGTH = 25
 
 
 class WallAnchor(Compound):
+    """A basic adhesive wall anchor for keyhole slots"""
     def __init__(self, screw_diameter: int, screw_length:int, glue_area:int):
         with BuildPart() as bp:
             pass
