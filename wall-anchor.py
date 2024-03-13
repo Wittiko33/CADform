@@ -25,6 +25,9 @@ class WallAnchor(Compound):
             with BuildSketch(bp.faces().filter_by(Axis.Z).sort_by(Axis.Z)[-1]):
                 Circle(radius=screw_diameter/2 + 3)
             extrude(amount=screw_length-plate_thickness)
+            with BuildSketch(bp.faces().filter_by(Axis.Z).sort_by(Axis.Z)[-1]):
+                Circle(radius=screw_diameter/2)
+            extrude(amount=-screw_length,mode=Mode.SUBTRACT)
         super().__init__(bp.part.wrapped)
 
 
