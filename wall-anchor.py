@@ -22,6 +22,8 @@ class WallAnchor(Compound):
             with BuildSketch():
                 RectangleRounded(glue_area, glue_area, corner_radius)
             extrude(amount=plate_thickness)
+            with BuildSketch(bp.faces().filter_by(Axis.Z).sort_by(Axis.Z))[-1]:
+                pass
         super().__init__(bp.part.wrapped)
 
 
