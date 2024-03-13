@@ -1,5 +1,6 @@
 from build123d import *
 from ocp_vscode import show
+import os
 
 # Units in mm
 SCREW_DIAMETER = 4
@@ -48,4 +49,8 @@ if __name__ == "__main__":
         plate_thickness=2,
     )
     show(my_anchor)
+    try:
+        os.mkdir("./output")
+    except FileExistsError:
+        pass
     my_anchor.export_step("output/wall_anchor.step")
