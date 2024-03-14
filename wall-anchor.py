@@ -44,7 +44,7 @@ class WallAnchor(Compound):
 if __name__ == "__main__":
     my_anchor = WallAnchor(
         screw_diameter=SCREW_DIAMETER,
-        screw_length=SCREW_LENGTH,
+        screw_length=SCREW_LENGTH-2, # shorten by 2mm to make the box fight tighter against the wall
         glue_area=GLUE_AREA_LENGTH,
         plate_thickness=2,
     )
